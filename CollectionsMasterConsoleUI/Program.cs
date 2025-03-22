@@ -1,53 +1,77 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+
 
 namespace CollectionsMasterConsoleUI
 {
     class Program
     {
+        static void NumberPrinter(int[] numbers) {
+            foreach (int i in numbers) {
+                Console.Write($"{i}\t");
+            }
+            Console.Write("\n");
+        }
+
+        static int CountMultipleOfThree(int[] numbers) {
+            int count = 0;
+            foreach (int i in numbers) {
+                if (i % 3 == 0) {count++;}
+            }
+            return count;
+        }
         static void Main(string[] args)
         {
             //TODO: Follow the steps provided in the comments under each region.
             //Make the console formatted to display each section well
             //Utlilize the method stubs at the bottom for the methods you must create ⬇⬇⬇
+            Random rnd = new Random();
+
 
             #region Arrays
-            //TODO: Create an integer Array of size 50
-            
+            // Create random array
+            int[] numbers = new int[50];
 
-            //TODO: Create a method to populate the number array with 50 random numbers that are between 0 and 50
-            
+            for (int i = 0; i < 50; i++) {
+                numbers[i] = rnd.Next(0, 50);
+            }
 
-            //TODO: Print the first number of the array
 
-            //TODO: Print the last number of the array            
+            // Print the first and last number of the array
+            Console.WriteLine($"First number\n{numbers[0]}");
+            Console.WriteLine($"Last number\n{numbers[49]}\n");          
 
-            Console.WriteLine("All Numbers Original");
-            //UNCOMMENT this method to print out your numbers from arrays or lists
-            //NumberPrinter();
-            Console.WriteLine("-------------------");
+            // Print all numbers
+            Console.WriteLine("All Numbers");
+            NumberPrinter(numbers);
+            Console.Write("\n");
 
             //TODO: Reverse the contents of the array and then print the array out to the console.
             //Try for 2 different ways
             /*  1) First way, using a custom method => Hint: Array._____(); 
                 2) Second way, Create a custom method (scroll to bottom of page to find ⬇⬇⬇)
             */
-
             Console.WriteLine("All Numbers Reversed:");
+            Array.Reverse(numbers);
+            NumberPrinter(numbers);
+            Console.Write("\n");
 
-            Console.WriteLine("---------REVERSE CUSTOM------------");
 
-            Console.WriteLine("-------------------");
 
             //TODO: Create a method that will set numbers that are a multiple of 3 to zero then print to the console all numbers
-            Console.WriteLine("Multiple of three = 0: ");
-            
+            int multiplesOfThree = CountMultipleOfThree(numbers);
+            Console.WriteLine($"Multiple of three = {multiplesOfThree}: ");
+            Console.Write("\n");
 
-            Console.WriteLine("-------------------");
 
-            //TODO: Sort the array in order now
-            /*      Hint: Array.____()      */
+
+
             Console.WriteLine("Sorted numbers:");
+            Array.Sort(numbers);
+            NumberPrinter(numbers);
+            Console.Write("\n");
             
 
             Console.WriteLine("\n************End Arrays*************** \n");
